@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Earthquake Analytics</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Earthquake Modeling &amp; Analytics</h1>
+      <div class="row">
+        <label>API Base URL
+          <input id="apiBase" value="http://127.0.0.1:8000" />
+        </label>
+
+        <label>Region
+          <select id="regionSelect"></select>
+        </label>
+
+        <label>Min Magnitude
+          <input id="minMag" type="number" step="0.1" value="3.0" />
+        </label>
+
+        <button id="refreshBtn">Refresh</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <div class="card">
+        <h2>Recent Earthquakes</h2>
+        <div class="small">From database via backend API</div>
+        <div class="tableWrap">
+          <table id="quakeTable">
+            <thead>
+              <tr>
+                <th>Time (UTC)</th>
+                <th>Mag</th>
+                <th>Depth (km)</th>
+                <th>Place</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Map</h2>
+        <div id="map"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>SQL Demos</h2>
+      <div class="row">
+        <label>Query
+          <select id="sqlSelect">
+            <option value="q01_counts_by_region">q01_counts_by_region</option>
+            <option value="q02_avg_mag_by_region_min_n">q02_avg_mag_by_region_min_n</option>
+            <option value="q03_top_n_strongest">q03_top_n_strongest</option>
+            <option value="q04_monthly_trend_region">q04_monthly_trend_region</option>
+            <option value="q05_magnitude_buckets">q05_magnitude_buckets</option>
+            <option value="q06_station_counts_by_region">q06_station_counts_by_region</option>
+            <option value="q07_regions_with_many_sig">q07_regions_with_many_sig</option>
+            <option value="q08_top_stations_by_assigned_quakes">q08_top_stations_by_assigned_quakes</option>
+            <option value="q09_quakes_above_region_avg">q09_quakes_above_region_avg</option>
+            <option value="q10_region_threshold">q10_region_threshold</option>
+          </select>
+        </label>
+        <button id="runSqlBtn">Run</button>
+      </div>
+      <pre id="sqlOut"></pre>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
