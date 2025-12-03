@@ -1,1 +1,5 @@
-Python dependencies:
+fastapi>=0.110,<0.120
+uvicorn[standard]>=0.23,<0.31
+sqlmodel>=0.0.16,<0.0.23
+httpx>=0.25,<0.28
+python-dotenv>=1.0,<2.0
